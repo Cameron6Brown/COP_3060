@@ -8,3 +8,27 @@ body {
 .highlight {
     color: #2a9d8f; /* teal-ish color */
 }
+/* ID selector */
+#special {
+    background-color: #e76f51; /* reddish background */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Headings styling */
+h1 {
+    color: #264653; /* dark blue-green */
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    color: #e9c46a; /* yellow/gold */
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Add margin to paragraph */
+p {
+    margin-bottom: 1.5em;
+}
