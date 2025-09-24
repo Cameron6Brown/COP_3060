@@ -4,3 +4,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fafafa;
+/* Class selector */
+.highlight {
+    color: #2a9d8f; /* teal-ish color */
+}
