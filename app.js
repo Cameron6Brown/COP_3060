@@ -16,3 +16,23 @@ let lastVisit = undefined;                      // undefined/null
 const yearsLeft = graduationYear - 2025;        // arithmetic
 const isExactYear = graduationYear === 2025;    // strict comparison
 const canGraduate = isExactYear && profile.major === "CS"; // logical
+
+// DOM Elements
+
+const form = document.querySelector("form");
+const emailInput = document.getElementById("email");
+const statusDiv = document.createElement("div");
+statusDiv.id = "status";
+form.after(statusDiv);
+
+const moviesTable = document.querySelector("table");
+const footerList = document.createElement("ul");
+moviesTable.after(footerList);
+
+const filterDropdown = document.createElement("select");
+filterDropdown.innerHTML = `
+    <option value="">--Filter by Company (A-Z)--</option>
+    <option value="asc">A–Z</option>
+    <option value="desc">Z–A</option>
+`;
+moviesTable.after(filterDropdown);
