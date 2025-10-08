@@ -42,3 +42,34 @@ moviesTable.after(filterDropdown);
 form.addEventListener("submit", handleFormSubmit);
 emailInput.addEventListener("input", validateEmail);
 filterDropdown.addEventListener("change", applyCompanyFilter);
+
+// Control Flow (Validation + Loop)
+
+
+const statusDiv = document.createElement("div");
+statusDiv.id = "status";
+document.querySelector("form").after(statusDiv);
+
+
+const emailInput = document.getElementById("email");
+emailInput.addEventListener("input", () => {
+    const email = emailInput.value;
+
+    if (email.includes("@") && email.length >= 5) {
+        statusDiv.textContent = "✅ Email is valid.";
+        statusDiv.style.color = "green";
+    } else {
+        statusDiv.textContent = "❌ Email must include '@' and be at least 5 characters.";
+        statusDiv.style.color = "red";
+    }
+});
+
+const hobbies = ["Gaming", "Camping", "Coding", "Reading", "Hiking", "Traveling"];
+const hobbyList = document.createElement("ul");
+document.body.appendChild(hobbyList);
+
+for (let i = 0; i < hobbies.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = hobbies[i];
+    hobbyList.appendChild(li);
+}
