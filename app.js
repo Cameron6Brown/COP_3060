@@ -73,3 +73,67 @@ for (let i = 0; i < hobbies.length; i++) {
     li.textContent = hobbies[i];
     hobbyList.appendChild(li);
 }
+
+// Fetch (AJAX)
+
+const fetchButton = document.createElement("button");
+fetchButton.textContent = "Load Users";
+document.body.appendChild(fetchButton);
+
+const userList = document.createElement("ul");
+document.body.appendChild(userList);
+
+const filterSelect = document.createElement("select");
+filterSelect.innerHTML = `
+  <option value="">-- Sort Users A–Z --</option>
+  <option value="asc">A–Z</option>
+  <option value="desc">Z–A</option>
+`;
+document.body.appendChild(filterSelect);
+
+let usersData = []; // Array to store fetched users
+
+// Function to render users list
+function renderUsers(users) {
+  userList.innerHTML = ""; // Clear current list
+  if (users.length === 0) {
+    userList.innerHTML = "<li>No users found.</li>";
+    return;
+  }
+  const itemsToRender = users.slice(0, 10); // Render up to 10 items
+  itemsToRender.forEach(user => {
+    const li = document.createElement("li");
+    li.textContent = `${user.name.first} ${user.name.last} (${user.email})`;
+    userList.appendChild(li);
+  });
+}
+
+// Function to fetch users
+async function fetchUsers() {
+  userList.innerHTML = "<li>Loading…</li>";
+  try {
+    const response = await fetch("https://randomuser.me/api/?results=20"); // Public, no-auth API
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    const data = await response.json();
+    usersData = data.results;
+    renderUsers(usersData);
+  } catch (error) {
+    userList.innerHTML = `<li style="color:red;">Error: ${error.message}</li>`;
+  }
+}
+
+// Function to apply filter/sort
+function applyFilter() {
+  let sortedUsers = [...usersData];
+  const sortOrder = filterSelect.value;
+  if (sortOrder === "asc") {
+    sortedUsers.sort((a, b) => a.name.first.localeCompare(b.name.first));
+  } else if (sortOrder === "desc") {
+    sortedUsers.sort((a, b) => b.name.first.localeCompare(a.name.first));
+  }
+  renderUsers(sortedUsers);
+}
+
+// Event listeners
+fetchButton.addEventListener("click", fetchUsers);
+filterSelect.addEventListener("change", applyFilter);
