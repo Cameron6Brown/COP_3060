@@ -137,3 +137,52 @@ function applyFilter() {
 // Event listeners
 fetchButton.addEventListener("click", fetchUsers);
 filterSelect.addEventListener("change", applyFilter);
+
+// Sample data array
+const data = [
+  { id: 1, name: "Alice", score: 85 },
+  { id: 2, name: "Bob", score: 92 },
+  { id: 3, name: "Charlie", score: 78 },
+  { id: 4, name: "Diana", score: 90 }
+];
+
+// Function 1: build a URL for fetching data 
+
+function buildUrl(base, queryParams = {}) {
+  const queryString = Object.entries(queryParams)
+    .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+    .join("&");
+  return queryString ? `${base}?${queryString}` : base;
+}
+
+// Function 2: render a list of items into the DOM
+function renderList(items, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = ""; // Clear existing content
+
+  if (items.length === 0) {
+    container.textContent = "No items to display.";
+    return;
+  }
+
+  const ul = document.createElement("ul");
+  items.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} (Score: ${item.score})`;
+    ul.appendChild(li);
+  });
+
+  container.appendChild(ul);
+}
+
+// Function 3: filter data based on minimum score
+function filterData(items, minScore) {
+  return items.filter(item => item.score >= minScore);
+}
+
+// Example usage:
+const url = buildUrl("https://api.example.com/users", { minScore: 80 });
+console.log("Fetch URL:", url);
+
+const filteredData = filterData(data, 80);
+renderList(filteredData, "output");
