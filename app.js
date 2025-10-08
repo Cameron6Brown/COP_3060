@@ -36,3 +36,9 @@ filterDropdown.innerHTML = `
     <option value="desc">Z–A</option>
 `;
 moviesTable.after(filterDropdown);
+
+// Event Listeners
+
+form.addEventListener("submit", handleFormSubmit);
+emailInput.addEventListener("input", validateEmail);
+filterDropdown.addEventListener("change", applyCompanyFilter);
