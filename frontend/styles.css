@@ -1,1 +1,78 @@
+/* styles.css */
 
+/* Type selector */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Class selector */
+.highlight {
+    color: #2a9d8f;
+}
+
+/* ID selector */
+#special {
+    background-color: #e76f51;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Headings styling */
+h1 {
+    color: #264653;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    color: #e9c46a;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Paragraph */
+p {
+    margin-bottom: 1.5em;
+}
+
+/* Table styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1em;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+/* Button styling */
+button {
+    background-color: #264653;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 5px 10px 0;
+}
+
+button:hover {
+    background-color: #1d3a47;
+}
+
+/* Status div */
+#status {
+    margin: 10px 0;
+    font-weight: bold;
+}
